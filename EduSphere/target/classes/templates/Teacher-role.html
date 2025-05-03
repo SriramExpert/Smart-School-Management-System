@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Identity</title>
+    <link th:href="@{/css/Teacher-role.css}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+<div class="container">
+    <h1 id="heading">SELECT YOUR IDENTITY</h1>
+    <section class="button-group">
+        <button id="addCourseButton" class="btn">Add Course</button>
+        <button id="updateResultForm" class="btn">Update Result</button>
+    </section>
+</div>
+<input type="submit" value="Back" class="backbutton" onclick="window.history.back(); return false;">
+<script>
+    document.getElementById("addCourseButton").addEventListener("click", function() {
+      window.location.href = "/Teacher-role/AddCourse";
+    });
+
+    document.getElementById("updateResultForm").addEventListener("click", function(){
+    window.location.href="/Result/load";
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Verification</title>
+    <link rel="stylesheet" th:href="@{/css/StudentVerification.css}">
+</head>
+<body>
+<header>
+    <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+<div class="container">
+    <h1 id="heading">Student Verification</h1>
+    <section>
+        <form th:action="@{/check/userId}" method="get">
+        <label>Name:</label>
+            <input type="text" name="name" autocomplete="off" required><br>
+            <label>Register Number:</label>
+            <input type="text" name="registerNumber" autocomplete="off" required><br>
+            <button type="submit">Get Result</button>
+        </form>
+    </section>
+</div>
+<input type="submit" value="Back" class="back" onclick="window.history.back(); return false;">
+</body>
+</html>

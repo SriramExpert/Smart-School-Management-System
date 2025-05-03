@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" th:href="@{/css/StudentList.css}">
+</head>
+<body>
+<header>
+    <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+<div class="container">
+    <h1 id="heading">Student List</h1>
+    <table class="student-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Register No</th>
+            <th>Course</th>
+            <th>Mail</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="enrollment : ${Enrollments}">
+            <td th:text="${enrollment.name}"></td>
+            <td th:text="${enrollment.registerNo != null ? enrollment.registerNo.registerNumber : 'Not Assigned'}"></td>
+            <td th:text="${enrollment.course.courseName}"></td>
+            <td th:text="${enrollment.mail}"></td>
+            <td class="action-buttons">
+                <a th:href="@{/Student-Form/Enrollments/edit/{id}(id=${enrollment.id})}" class="btn edit-btn">EDIT</a>
+                <a th:href="@{/Student-Form/Enrollments/delete/{id}(id=${enrollment.id})}" class="btn delete-btn" onclick="return confirm('Are you sure?')">DELETE</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<input type="submit" value="Back" class="back" onclick="window.history.back(); return false;">
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <link rel="stylesheet" th:href="@{/css/Style.css}">
+</head>
+<body>
+<header>
+    <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+<div class="container">
+    <h1 id="heading">SELECT YOUR IDENTITY</h1>
+    <section class="button-group">
+        <button id="adminButton" class="btn">Admin</button>
+        <button id="studentForm" class="btn">Student</button>
+        <button id="teacherForm" class="btn">Teacher</button>
+    </section>
+</div>
+
+
+<script>
+    document.getElementById("adminButton").addEventListener("click", function() {
+      window.location.href = "Admin-login";
+    });
+
+    document.getElementById("studentForm").addEventListener("click", function(){
+    window.location.href="/Student-Form";
+    });
+
+    document.getElementById("teacherForm").addEventListener("click", function(){
+    window.location.href="Teacher-form";
+    });
+</script>
+</body>
+</html>

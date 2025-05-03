@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <link rel="stylesheet" th:href="@{/css/Student-Form.css}">
+</head>
+<body>
+<header>
+    <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+<div class="container">
+    <h1 id="heading">SELECT YOUR OPTION</h1>
+    <section class="button-group">
+        <button id="enrollmentButton" class="btn">Enrollment</button>
+        <button id="courseForm" class="btn">View Course</button>
+        <button id="personalInfoForm" class="btn">Personal Information</button>
+    </section>
+</div>
+<input type="submit" value="Back" class="back" onclick="window.history.back(); return false;">
+<script>
+    document.getElementById("enrollmentButton").addEventListener("click", function() {
+        window.location.href = "Student-Form/Enrollments/Enrollment-form";
+    });
+
+    document.getElementById("courseForm").addEventListener("click", function(){
+        window.location.href = "/Student-Form/Course/Course-list";
+    });
+
+    document.getElementById("personalInfoForm").addEventListener("click", function(){
+        window.location.href = "/Student-Form/student-verification";
+    });
+</script>
+</body>
+</html>

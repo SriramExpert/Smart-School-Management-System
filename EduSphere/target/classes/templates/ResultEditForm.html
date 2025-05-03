@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Result</title>
+    <link rel="stylesheet" th:href="@{/css/ResultEditForm.css}">
+</head>
+<body>
+
+<h2>Edit Student Result</h2>
+
+<form th:action="@{/Result/update}" th:object="${resultPage}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    Name: <input type="text" th:field="*{name}" readonly/><br/>
+    Register No: <input type="text" th:field="*{registerNo}" readonly/><br/>
+    Exam Mark: <input type="text"  class="exam-mark" th:field="*{exammark}"/><br/>
+    Attendance %: <input type="text"  class="attendance-percent"  th:field="*{attendancepercent}"/><br/>
+    Result: <input type="text" class="result-input"  th:field="*{result}"/><br/>
+
+    <button type="submit">Update</button>
+</form>
+<input type="submit" value="Back" class="back" onclick="window.history.back(); return false;">
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const examInput = document.querySelector(".exam-mark");
+        const attendanceInput = document.querySelector(".attendance-percent");
+        const resultInput = document.querySelector(".result-input");
+
+        function updateResult() {
+            const examMark = parseFloat(examInput.value);
+            const attendance = parseFloat(attendanceInput.value);
+
+            if (isNaN(examMark) || isNaN(attendance)) {
+                resultInput.value = "-";
+                resultInput.style.color = "black";
+            } else if (examMark >= 40 && attendance >= 75) {
+                resultInput.value = "Pass";
+                resultInput.style.color = "green";
+            } else {
+                resultInput.value = "Fail";
+                resultInput.style.color = "red";
+            }
+        }
+
+        examInput.addEventListener("input", updateResult);
+        attendanceInput.addEventListener("input", updateResult);
+
+        // Run it once on page load too
+        updateResult();
+    });
+</script>
+
+
+</body>
+
+</html>

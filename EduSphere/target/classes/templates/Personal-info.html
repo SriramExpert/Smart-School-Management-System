@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course List</title>
+  <link rel="stylesheet" th:href="@{/css/PersonalInfo.css}">
+</head>
+<body>
+<header>
+  <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+<div class="container">
+  <h1 id="heading">Student Details</h1>
+
+  <!-- Search Form -->
+  <form th:action="{/check/userId/{name}(name=${enrollment.name})/{registerNumber}(registerNumber=${enrollment.registerNumber})}" id="searchForm" class="search-form">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input  th:field="{name}" type="text" id="name" class="form-input" autocomplete="off" placeholder="Enter student name" required>
+    </div>
+    <div class="form-group">
+      <label for="regNo">Registration No:</label>
+      <input th:field="{registerNumber}" type="text" id="regNo" class="form-input" autocomplete="off" placeholder="Enter registration number" required>
+    </div>
+    <input type="submit" value="Search" class="btn">
+  </form>
+
+</div>
+<input type="submit" value="Back" class="back" onclick="window.history.back(); return false;">
+</body>
+</html>

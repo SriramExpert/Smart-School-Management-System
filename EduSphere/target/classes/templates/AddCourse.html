@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Course</title>
+  <link rel="stylesheet" th:href="@{/css/Add-Course.css}">
+</head>
+<body>
+<header>
+  <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+<div class="container">
+  <h1 id="heading">Add Course</h1>
+  <form th:action="@{/Student-Form/Course/save}" th:object="${course}" method="post" class="login-form">
+    <div class="form-group">
+      <label for="Id">Enter the Course ID: </label>
+      <input type="text" th:field="*{courseId}" id="Id" class="form-input" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="Course">Enter the Course Name: </label>
+      <input type="text" th:field="*{courseName}" id="Course" class="form-input" autocomplete="off">
+    </div>
+    <input type="submit" value="Add" class="btn">
+  </form>
+</div>
+<input type="submit" value="Back" class="back" onclick="window.history.back(); return false;">
+</body>
+</html>

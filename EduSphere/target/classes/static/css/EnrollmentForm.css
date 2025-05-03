@@ -1,0 +1,160 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #f6f9f4;
+    --primary-color: #6a9c89;
+    --secondary-color: #3e6259;
+    --text-color: #2f2f2f;
+    --header-bg: #e0e8e1;
+    --header-text: #4a4a2f;
+    --button-bg: #6a9c89;
+    --button-hover-bg: #85b8a5;
+    --button-text: #ffffff;
+    --border-color: #d3ded7;
+    --form-bg: #fff;
+}
+body {
+    background: var(--bg-color);
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+header h1 {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 2rem;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    position: relative;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.enrollment-form {
+    background: var(--form-bg);
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);
+}
+
+select.form-input {
+    appearance: none; /* Remove default arrow */
+    background: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 10px center;
+    background-color: white;
+    padding-right: 30px;
+}
+
+.btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    #heading {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
+/* Back Button Styles - Matching the design system */
+.back {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #505091;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+}
+
+
+.back:hover {
+    transform: translateY(-2px);
+}
+
+.back:active {
+    transform: translateY(0);
+}

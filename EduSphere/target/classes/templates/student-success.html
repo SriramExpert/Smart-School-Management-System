@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registered</title>
+    <link rel="stylesheet" th:href="@{/css/student-success.css}">
+</head>
+<body><header>
+    <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+
+<div class="container">
+    <h2>Student Registration Details</h2>
+
+    <div class="details-container">
+        <p><strong>Name:</strong> <span th:text="${name}"></span></p>
+        <p><strong>Register No:</strong> <span th:text="${registerNo.registerNumber}"></span></p>
+        <p><strong>Course:</strong> <span th:text="${course}"></span></p>
+        <p><strong>Mail:</strong> <span th:text="${mail}"></span></p>
+    </div>
+    <div class="button-container">
+        <input type="button" value="Back" class="back" onclick="window.history.back(); return false;">
+        <a href="/Student-Form/Enrollments/Enrollment-form" class="register-button">Register Another Student</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+
+
+:root {
+    --bg-color: #f6f9f4;
+    --primary-color: #6a9c89;
+    --secondary-color: #3e6259;
+    --text-color: #2f2f2f;
+    --header-bg: #e0e8e1;
+    --header-text: #4a4a2f;
+    --button-bg: #6a9c89;
+    --button-hover-bg: #85b8a5;
+    --button-text: #ffffff;
+    --border-color: #d3ded7;
+    --form-bg: #fff;
+    --readonly-bg: #f5f5f5;
+    --readonly-text: #666;
+    --button-text: white;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --back-button-bg: #505091;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--form-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px var(--shadow-color);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 20px 0;
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[readonly] {
+    background-color: var(--readonly-bg);
+    color: var(--readonly-text);
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.result-input {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+.back {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: var(--back-button-bg);
+    color: var(--button-text);
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+}
+
+.back:hover {
+    transform: translateY(-2px);
+}
+
+.back:active {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+    }
+}

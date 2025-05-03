@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login Page</title>
+    <link rel="stylesheet" th:href="@{/css/AdminLogin.css}">
+</head>
+<body>
+<header>
+    <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+<div class="container">
+    <h1 id="heading">Admin Login</h1>
+    <form th:action="@{/Student-List}" th:object="${admin}" method="post" class="login-form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{name}" id="name" class="form-input" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" th:field="*{password}" id="password" class="form-input" autocomplete="off">
+        </div>
+        <input type="submit" value="Login" class="btn">
+    </form>
+<!--    <a href="#" class="back-btn">← Back</a>-->
+    <input type="submit" value="Back" class="back" onclick="window.history.back(); return false;">
+</div>
+
+
+</body>
+</html>

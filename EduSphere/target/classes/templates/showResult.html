@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result</title>
+    <link rel="stylesheet" th:href="@{/css/show-Result.css}">
+</head>
+<body>
+<header>
+    <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+
+<div class="container">
+    <h2>Result Details</h2>
+
+    <table class="results-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Register Number</th>
+            <th>Exam Mark</th>
+            <th>Attendance %</th>
+            <th>Result</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="result : ${results}">
+            <td th:text="${result.name}"></td>
+            <td th:text="${result.registerNo}"></td>
+            <td th:text="${result.Exammark}"></td>
+            <td th:text="${result.Attendancepercent}"></td>
+            <td th:class="${result.result == 'Pass'} ? 'grade-pass' : 'grade-fail'"
+                th:text="${result.result}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<input type="submit" value="Back" class="back" onclick="window.history.back(); return false;">
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result List</title>
+    <link rel="stylesheet" th:href="@{/css/ResultUpdation.css}">
+</head>
+<body>
+
+<header>
+    <h1>SCHOOL MANAGEMENT SYSTEM</h1>
+</header>
+
+<div class="container">
+    <h1 id="heading">Result List</h1>
+    <section>
+        <form th:action="@{/Result/save}" th:object="${resultWrapper}" method="post" id="resultForm">
+            <table class="Result-table">
+                <thead>
+                <tr>
+                    <th>Register No.</th>
+                    <th>Student Name</th>
+                    <th>Exam Mark</th>
+                    <th>Attendance Percentage</th>
+                    <th>Result</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="result, iterStat : *{resultPageList}">
+                    <td>
+                        <input type="text" th:field="*{resultPageList[__${iterStat.index}__].registerNo}" readonly/>
+                    </td>
+                    <td>
+                        <input type="text" th:field="*{resultPageList[__${iterStat.index}__].name}" readonly/>
+                    </td>
+                    <td>
+                        <input type="number" th:field="*{resultPageList[__${iterStat.index}__].exammark}" th:readonly="${result.confirmed} ? true"  class="exam-mark" required/>
+                    </td>
+                    <td>
+                        <input type="number" th:field="*{resultPageList[__${iterStat.index}__].attendancepercent}" th:readonly="${result.confirmed} ? true" class="attendance-percent" required/>
+                    </td>
+                    <td class="result-column">
+                        <input type="text" th:field="*{resultPageList[__${iterStat.index}__].result}" th:readonly="${result.confirmed} ? true" class="result-input" readonly/>
+                    </td>
+
+                    <td>
+                        <a th:href="@{/Result/edit/{id}(id=${result.id})}">
+                            <button type="button">Edit</button>
+                        </a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <button type="submit" id="confirmButton">Confirm</button>
+        </form>
+    </section>
+</div>
+<input type="submit" value="Back" class="back" onclick="window.history.back(); return false;">
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("resultForm");
+        const examInputs = document.querySelectorAll(".exam-mark");
+        const attendanceInputs = document.querySelectorAll(".attendance-percent");
+        const resultInputs = document.querySelectorAll(".result-input");
+
+        function updateResults() {
+            const rows = document.querySelectorAll(".Result-table tbody tr");
+
+            rows.forEach(row => {
+                const examInput = row.querySelector(".exam-mark");
+                const attendanceInput = row.querySelector(".attendance-percent");
+                const resultInput = row.querySelector(".result-input");
+
+                const examMark = parseFloat(examInput.value);
+                const attendance = parseFloat(attendanceInput.value);
+
+                if (examInput.value === "" || attendanceInput.value === "") {
+                    resultInput.value = "-";
+                    resultInput.style.color = "black";
+                } else if (examMark >= 40 && attendance >= 75) {
+                    resultInput.value = "Pass";
+                    resultInput.style.color = "green";
+                } else {
+                    resultInput.value = "Fail";
+                    resultInput.style.color = "red";
+                }
+            });
+        }
+
+        // Listen for input changes
+        examInputs.forEach(input => input.addEventListener("input", updateResults));
+        attendanceInputs.forEach(input => input.addEventListener("input", updateResults));
+
+        // Confirm button: freeze inputs and submit form
+       document.getElementById("confirmButton").addEventListener("click", function (event) {
+    event.preventDefault(); // prevent default form submission first
+
+    updateResults(); // recalculate Pass/Fail
+
+    // Make inputs readonly
+    examInputs.forEach(input => input.setAttribute("readonly", true));
+    attendanceInputs.forEach(input => input.setAttribute("readonly", true));
+    resultInputs.forEach(input => input.setAttribute("readonly", true));
+
+    // Submit the form manually
+    form.submit();
+});
+
+
+        // Edit button: make exam & attendance editable
+        document.getElementById("editButton").addEventListener("click", function () {
+            examInputs.forEach(input => input.removeAttribute("readonly"));
+            attendanceInputs.forEach(input => input.removeAttribute("readonly"));
+        });
+    });
+
+
+function confirmMarks() {
+    // Send POST to backend
+    document.getElementById("marksInput").readOnly = true;
+    document.getElementById("confirmBtn").style.display = "none";
+    document.getElementById("editBtn").style.display = "inline";
+}
+
+function enableEdit(index) {
+    const inputs = document.querySelectorAll(`tr:nth-child(${index + 1}) input`);
+    inputs.forEach(input => {
+        input.removeAttribute('readonly');
+    });
+}
+
+</script>
+
+</body>
+</html>
